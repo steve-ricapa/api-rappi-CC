@@ -50,6 +50,7 @@ gcp-rappi-fake/
 
 - Framework: FastAPI
 - Deploy: Cloud Run
+- Endpoint de salud: `GET /health`
 - Endpoint: `POST /rappi/orders`
 - Guarda el pedido en Firestore con estado inicial `CREATED`
 - Luego llama a AWS `POST /orders/rappi`
@@ -59,6 +60,7 @@ gcp-rappi-fake/
 
 - Framework: FastAPI
 - Deploy: Cloud Run
+- Endpoint de salud: `GET /health`
 - Endpoints:
   - `POST /rappi/orders/{externalOrderId}/status`
   - `GET /rappi/orders`
@@ -230,6 +232,18 @@ curl -X POST "$RAPPI_ORDER_API_URL/rappi/orders" \
     ],
     "total": 25.90
   }'
+```
+
+### Probar health de rappi-order-api
+
+```bash
+curl "$RAPPI_ORDER_API_URL/health"
+```
+
+### Probar health de rappi-status-api
+
+```bash
+curl "$RAPPI_STATUS_API_URL/health"
 ```
 
 ### Recibir actualizacion de estado en la ruta canonica

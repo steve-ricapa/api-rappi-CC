@@ -58,6 +58,17 @@ async def unexpected_exception_handler(_request: Request, exc: Exception):
     return error_response(str(exc), 500)
 
 
+@app.get("/health")
+def health():
+    return success_response(
+        {
+            "service": "rappi-status-api",
+            "status": "ok",
+            "firestoreCollection": FIRESTORE_COLLECTION,
+        }
+    )
+
+
 def get_order_document_or_404(external_order_id: str):
     snapshot = collection.document(external_order_id).get()
     if not snapshot.exists:

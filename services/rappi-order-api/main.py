@@ -71,6 +71,17 @@ async def unexpected_exception_handler(_request: Request, exc: Exception):
     return error_response(str(exc), 500)
 
 
+@app.get("/health")
+async def health():
+    return success_response(
+        {
+            "service": "rappi-order-api",
+            "status": "ok",
+            "firestoreCollection": FIRESTORE_COLLECTION,
+        }
+    )
+
+
 @app.post("/rappi/orders")
 async def create_rappi_order(payload: CreateRappiOrderRequest):
     if not AWS_RAPPI_ORDER_URL:
