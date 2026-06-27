@@ -1,0 +1,6 @@
+project_id                   = "your-gcp-project-id"
+region                       = "us-central1"
+artifact_registry_repository = "rappi-fake-images"
+firestore_collection         = "rappi_orders"
+aws_rappi_order_url          = "https://your-aws-api.execute-api.us-east-1.amazonaws.com/orders/rappi"
+rappi_api_key                = "same-key-configured-in-aws"
